@@ -2,7 +2,6 @@
 
 > AI-powered legal document simplification and analysis platform that transforms complex legal jargon into plain English with persistent data storage.
 
-![LegalEase Dashboard](https://via.placeholder.com/800x400/45a29e/ffffff?text=LegalEase+Dashboard)
 
 ## ✨ Features
 
