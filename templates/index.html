@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Document - LegalEase{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="hero-section text-center mb-5">
+                <h1 class="display-4 fw-bold mb-3">Simplify Legal Documents with AI</h1>
+                <p class="lead text-muted">Upload your legal documents and get instant AI-powered simplification and risk analysis</p>
+            </div>
+
+            <div class="card upload-card shadow-lg">
+                <div class="card-body p-5">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon mb-3">
+                            <i class="lucide lucide-upload-cloud"></i>
+                        </div>
+                        <h4 class="mb-2">Drop your document here</h4>
+                        <p class="text-muted mb-3">or click to browse</p>
+                        <input type="file" id="fileInput" accept=".pdf,.docx,.txt" hidden>
+                        <button class="btn btn-primary btn-lg" onclick="document.getElementById('fileInput').click()">
+                            <i class="lucide lucide-file-plus"></i> Choose File
+                        </button>
+                        <p class="small text-muted mt-3">Supports PDF, DOCX, and TXT files (max 16MB)</p>
+                    </div>
+
+                    <div class="file-preview d-none" id="filePreview">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="lucide lucide-file-text text-primary me-3" style="width: 40px; height: 40px;"></i>
+                                <div>
+                                    <h6 class="mb-0" id="fileName">document.pdf</h6>
+                                    <small class="text-muted" id="fileSize">0 KB</small>
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-outline-danger" onclick="removeFile()">
+                                <i class="lucide lucide-x"></i>
+                            </button>
+                        </div>
+
+                        <div class="action-buttons mt-4">
+                            <button class="btn btn-primary w-100 mb-2" onclick="simplifyDocument()">
+                                <i class="lucide lucide-wand-2"></i> Simplify Document
+                            </button>
+                            <button class="btn btn-outline-primary w-100" onclick="analyzeDocument()">
+                                <i class="lucide lucide-shield-alert"></i> Analyze Risks
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="loading-state d-none" id="loadingState">
+                        <div class="text-center py-4">
+                            <div class="spinner-border text-primary mb-3" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <h5 id="loadingText">Processing your document...</h5>
+                            <p class="text-muted">AI is analyzing the content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid mt-5">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="lucide lucide-sparkles"></i>
+                            </div>
+                            <h5>AI Simplification</h5>
+                            <p class="text-muted small">Convert complex legal jargon into plain English</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="lucide lucide-shield-check"></i>
+                            </div>
+                            <h5>Risk Analysis</h5>
+                            <p class="text-muted small">Identify potential risks and liabilities</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="lucide lucide-message-square"></i>
+                            </div>
+                            <h5>Interactive Q&A</h5>
+                            <p class="text-muted small">Ask questions about your documents</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+{% endblock %}
