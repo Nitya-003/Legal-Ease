@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Chat - LegalEase{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-lg chat-container">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="lucide lucide-message-circle"></i> Ask Questions About Your Document
+                    </h5>
+                    <p class="mb-0 small opacity-75">Get instant answers powered by AI</p>
+                </div>
+                
+                <div class="card-body p-0">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">
+                                <i class="lucide lucide-bot"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-bubble">
+                                    Hello! I'm your AI legal assistant. I've analyzed your document and I'm ready to answer any questions you have about it. What would you like to know?
+                                </div>
+                                <div class="message-time">Just now</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                class="form-control chat-input" 
+                                id="messageInput" 
+                                placeholder="Ask a question about your document..."
+                                autocomplete="off"
+                            >
+                            <button class="btn btn-primary" type="button" id="sendButton" onclick="sendMessage()">
+                                <i class="lucide lucide-send"></i>
+                            </button>
+                        </div>
+                        <div class="suggested-questions mt-3">
+                            <small class="text-muted d-block mb-2">Suggested questions:</small>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="askQuestion('What are the key terms?')">
+                                    What are the key terms?
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="askQuestion('What are the payment conditions?')">
+                                    What are the payment conditions?
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="askQuestion('Explain the liability clause')">
+                                    Explain the liability clause
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info mt-4">
+                <i class="lucide lucide-info"></i>
+                <strong>Pro Tip:</strong> You can ask specific questions about clauses, terms, dates, obligations, or any part of your document. The AI will provide clear explanations in plain language.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}
