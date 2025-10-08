@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block title %}Document History - LegalEase{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">
+                    <i class="lucide lucide-folder-open"></i> Document History
+                </h2>
+                <a href="/" class="btn btn-primary">
+                    <i class="lucide lucide-plus"></i> Upload New
+                </a>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="stat-card-alt">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Total Documents</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="stat-card-alt">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">This Month</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="stat-card-alt">
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">High Risk</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="stat-card-alt">
+                        <div class="stat-value">65</div>
+                        <div class="stat-label">Avg. Risk Score</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="input-group">
+                    <span class="input-group-text">
+                        <i class="lucide lucide-search"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Search documents...">
+                    <select class="form-select" style="max-width: 200px;">
+                        <option>All Documents</option>
+                        <option>High Risk</option>
+                        <option>Medium Risk</option>
+                        <option>Low Risk</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" id="documentGrid">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card document-card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="document-icon">
+                                    <i class="lucide lucide-file-text"></i>
+                                </div>
+                                <span class="badge risk-badge risk-high">High Risk</span>
+                            </div>
+                            <h5 class="card-title">Employment Contract 2024</h5>
+                            <p class="text-muted small mb-3">
+                                <i class="lucide lucide-calendar"></i> Oct 8, 2025
+                            </p>
+                            <div class="document-stats mb-3">
+                                <small class="text-muted">
+                                    <i class="lucide lucide-file"></i> 15 pages
+                                    <span class="ms-3"><i class="lucide lucide-alert-triangle"></i> Risk: 78</span>
+                                </small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="/analysis" class="btn btn-sm btn-outline-primary flex-fill">
+                                    <i class="lucide lucide-eye"></i> View
+                                </a>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="lucide lucide-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card document-card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="document-icon">
+                                    <i class="lucide lucide-file-text"></i>
+                                </div>
+                                <span class="badge risk-badge risk-medium">Medium Risk</span>
+                            </div>
+                            <h5 class="card-title">Service Agreement</h5>
+                            <p class="text-muted small mb-3">
+                                <i class="lucide lucide-calendar"></i> Oct 5, 2025
+                            </p>
+                            <div class="document-stats mb-3">
+                                <small class="text-muted">
+                                    <i class="lucide lucide-file"></i> 8 pages
+                                    <span class="ms-3"><i class="lucide lucide-alert-triangle"></i> Risk: 55</span>
+                                </small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="/analysis" class="btn btn-sm btn-outline-primary flex-fill">
+                                    <i class="lucide lucide-eye"></i> View
+                                </a>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="lucide lucide-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card document-card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="document-icon">
+                                    <i class="lucide lucide-file-text"></i>
+                                </div>
+                                <span class="badge risk-badge risk-low">Low Risk</span>
+                            </div>
+                            <h5 class="card-title">NDA Agreement</h5>
+                            <p class="text-muted small mb-3">
+                                <i class="lucide lucide-calendar"></i> Oct 1, 2025
+                            </p>
+                            <div class="document-stats mb-3">
+                                <small class="text-muted">
+                                    <i class="lucide lucide-file"></i> 5 pages
+                                    <span class="ms-3"><i class="lucide lucide-alert-triangle"></i> Risk: 28</span>
+                                </small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="/analysis" class="btn btn-sm btn-outline-primary flex-fill">
+                                    <i class="lucide lucide-eye"></i> View
+                                </a>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="lucide lucide-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card document-card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="document-icon">
+                                    <i class="lucide lucide-file-text"></i>
+                                </div>
+                                <span class="badge risk-badge risk-medium">Medium Risk</span>
+                            </div>
+                            <h5 class="card-title">Lease Agreement</h5>
+                            <p class="text-muted small mb-3">
+                                <i class="lucide lucide-calendar"></i> Sep 28, 2025
+                            </p>
+                            <div class="document-stats mb-3">
+                                <small class="text-muted">
+                                    <i class="lucide lucide-file"></i> 12 pages
+                                    <span class="ms-3"><i class="lucide lucide-alert-triangle"></i> Risk: 62</span>
+                                </small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="/analysis" class="btn btn-sm btn-outline-primary flex-fill">
+                                    <i class="lucide lucide-eye"></i> View
+                                </a>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="lucide lucide-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card document-card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="document-icon">
+                                    <i class="lucide lucide-file-text"></i>
+                                </div>
+                                <span class="badge risk-badge risk-low">Low Risk</span>
+                            </div>
+                            <h5 class="card-title">Vendor Contract</h5>
+                            <p class="text-muted small mb-3">
+                                <i class="lucide lucide-calendar"></i> Sep 25, 2025
+                            </p>
+                            <div class="document-stats mb-3">
+                                <small class="text-muted">
+                                    <i class="lucide lucide-file"></i> 6 pages
+                                    <span class="ms-3"><i class="lucide lucide-alert-triangle"></i> Risk: 35</span>
+                                </small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="/analysis" class="btn btn-sm btn-outline-primary flex-fill">
+                                    <i class="lucide lucide-eye"></i> View
+                                </a>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="lucide lucide-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card document-card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="document-icon">
+                                    <i class="lucide lucide-file-text"></i>
+                                </div>
+                                <span class="badge risk-badge risk-high">High Risk</span>
+                            </div>
+                            <h5 class="card-title">Partnership Agreement</h5>
+                            <p class="text-muted small mb-3">
+                                <i class="lucide lucide-calendar"></i> Sep 20, 2025
+                            </p>
+                            <div class="document-stats mb-3">
+                                <small class="text-muted">
+                                    <i class="lucide lucide-file"></i> 20 pages
+                                    <span class="ms-3"><i class="lucide lucide-alert-triangle"></i> Risk: 82</span>
+                                </small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="/analysis" class="btn btn-sm btn-outline-primary flex-fill">
+                                    <i class="lucide lucide-eye"></i> View
+                                </a>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="lucide lucide-download"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
