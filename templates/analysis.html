@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Results - LegalEase{% endblock %}
+
+{% block extra_css %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">
+                    <i class="lucide lucide-file-search"></i> Document Analysis
+                </h2>
+                <a href="/" class="btn btn-outline-primary">
+                    <i class="lucide lucide-upload"></i> New Analysis
+                </a>
+            </div>
+
+            <div class="card shadow-lg mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5 class="card-title">Sample Employment Agreement</h5>
+                            <p class="text-muted mb-3">
+                                <i class="lucide lucide-calendar"></i> Analyzed on October 8, 2025
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <span class="badge risk-badge risk-medium fs-6">Medium Risk</span>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card">
+                                <div class="stat-value">12</div>
+                                <div class="stat-label">Pages</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card">
+                                <div class="stat-value">4,500</div>
+                                <div class="stat-label">Words</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card">
+                                <div class="stat-value">65</div>
+                                <div class="stat-label">Risk Score</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6 mb-3">
+                            <div class="stat-card">
+                                <div class="stat-value">3</div>
+                                <div class="stat-label">Key Risks</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="lucide lucide-pie-chart"></i> Risk Distribution
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="riskChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="lucide lucide-bar-chart-2"></i> Risk Severity
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="severityChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="lucide lucide-alert-triangle"></i> Identified Risks
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="risk-item mb-3 p-3 border rounded">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="mb-0">
+                                <i class="lucide lucide-dollar-sign text-danger"></i> Financial Risk
+                            </h6>
+                            <span class="badge bg-danger">High</span>
+                        </div>
+                        <p class="text-muted mb-2">Potential liability clauses that could result in significant financial obligations</p>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="risk-item mb-3 p-3 border rounded">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="mb-0">
+                                <i class="lucide lucide-shield-alert text-warning"></i> Compliance Risk
+                            </h6>
+                            <span class="badge bg-warning">Medium</span>
+                        </div>
+                        <p class="text-muted mb-2">Some regulatory requirements may need additional verification</p>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 55%"></div>
+                        </div>
+                    </div>
+
+                    <div class="risk-item mb-3 p-3 border rounded">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="mb-0">
+                                <i class="lucide lucide-file-x text-success"></i> Termination Risk
+                            </h6>
+                            <span class="badge bg-success">Low</span>
+                        </div>
+                        <p class="text-muted mb-2">Contract termination clauses appear balanced and reasonable</p>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="lucide lucide-lightbulb"></i> Recommendations
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled recommendation-list">
+                        <li class="mb-3">
+                            <i class="lucide lucide-check-circle text-primary"></i>
+                            Review financial liability caps with legal counsel
+                        </li>
+                        <li class="mb-3">
+                            <i class="lucide lucide-check-circle text-primary"></i>
+                            Verify compliance requirements with regulatory team
+                        </li>
+                        <li class="mb-3">
+                            <i class="lucide lucide-check-circle text-primary"></i>
+                            Consider negotiating more favorable payment terms
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock %}
